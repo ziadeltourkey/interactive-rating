@@ -3,44 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="style.css">
   <title>Interactive Rating Component</title>
 </head>
 <body>
 
-  <div class="container">
+  <!-- Main Landmark -->
+  <main class="container">
 
     <!-- Rating State -->
-    <div id="rating-state" class="card">
-      <div class="star">
-        <img src="./images/icon-star.svg" alt="star">
+    <section id="rating-state" class="card" aria-labelledby="main-heading">
+
+      <div class="star" aria-hidden="true">
+        <img src="./images/icon-star.svg" alt="">
       </div>
 
-      <h2>How did we do?</h2>
+      <!-- Level One Heading -->
+      <h1 id="main-heading">How did we do?</h1>
 
       <p>
         Please let us know how we did with your support request.
         All feedback is appreciated to help us improve our offering!
       </p>
 
-      <div class="ratings">
-        <button class="rating-btn">1</button>
-        <button class="rating-btn">2</button>
-        <button class="rating-btn">3</button>
-        <button class="rating-btn">4</button>
-        <button class="rating-btn">5</button>
+      <div class="ratings" role="radiogroup" aria-label="Rating selection">
+
+        <button class="rating-btn"
+                role="radio"
+                aria-checked="false"
+                aria-label="Rate 1 out of 5">1</button>
+
+        <button class="rating-btn"
+                role="radio"
+                aria-checked="false"
+                aria-label="Rate 2 out of 5">2</button>
+
+        <button class="rating-btn"
+                role="radio"
+                aria-checked="false"
+                aria-label="Rate 3 out of 5">3</button>
+
+        <button class="rating-btn"
+                role="radio"
+                aria-checked="false"
+                aria-label="Rate 4 out of 5">4</button>
+
+        <button class="rating-btn"
+                role="radio"
+                aria-checked="false"
+                aria-label="Rate 5 out of 5">5</button>
+
       </div>
 
-      <button id="submit-btn" class="submit">Submit</button>
-    </div>
+      <button id="submit-btn"
+              class="submit"
+              disabled
+              aria-disabled="true">
+        Submit
+      </button>
+
+    </section>
 
     <!-- Thank You State -->
-    <div id="thank-you-state" class="card hidden">
-      <img src="./images/illustration-thank-you.svg" alt="thank you">
+    <section id="thank-you-state"
+             class="card hidden"
+             aria-live="polite">
+
+      <img src="./images/illustration-thank-you.svg" alt="Thank you illustration">
 
       <p class="selected">
-        You selected <span id="selected-rating"></span> out of 5
+        You selected
+        <span id="selected-rating"
+              aria-live="polite"
+              aria-atomic="true"></span>
+        out of 5
       </p>
 
       <h2>Thank you!</h2>
@@ -49,9 +85,10 @@
         We appreciate you taking the time to give a rating.
         If you ever need more support, don’t hesitate to get in touch!
       </p>
-    </div>
 
-  </div>
+    </section>
+
+  </main>
 
   <script src="script.js"></script>
 </body>
