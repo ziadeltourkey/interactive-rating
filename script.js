@@ -8,15 +8,27 @@ let chosenRating = null;
 
 ratingButtons.forEach(button => {
   button.addEventListener("click", () => {
-    ratingButtons.forEach(btn => btn.classList.remove("active"));
+
+    ratingButtons.forEach(btn => {
+      btn.classList.remove("active");
+      btn.setAttribute("aria-checked", "false");
+    });
+
     button.classList.add("active");
+    button.setAttribute("aria-checked", "true");
+
     chosenRating = button.textContent;
+
+    submitButton.disabled = false;
+    submitButton.setAttribute("aria-disabled", "false");
   });
 });
 
 submitButton.addEventListener("click", () => {
   if (chosenRating !== null) {
+
     selectedRating.textContent = chosenRating;
+
     ratingState.classList.add("hidden");
     thankYouState.classList.remove("hidden");
   }
